@@ -17,7 +17,6 @@
 主要包括:
 1. 供消费者购物和下单的购物客户端
 2. 供商城运营人员进行后台管理的信息管理系统
-> [详细需求文档](https://suwen.lanzous.com/inwzdf1ws7i)
 
 ## 2.技术栈
 
@@ -29,51 +28,36 @@
 * Tomcat
 * ...
 
-本仓库是从 SpringMVC 迁移至 SpringBoot, 故使用 JSP(Spring 官方已经不推荐使用), 原仓库为 [LexianLife-spring](https://github.com/EslSuwen/LexianLife/tree/spring).
+本仓库是从 SpringMVC 迁移至 SpringBoot, 故使用 JSP。
 
 ## 3.实现功能
 * 顾客：用户注册、登录、登出、修改信息、地址管理、关注商品、浏览记录..
 * 商品：商品详请、商品分类、商品评论..
 * 管理员：管理员信息管理、顾客管理、商品管理、订单管理..
 ...
-> 尚存在问题的功能均以 TODO 标识
 
 ## 4.使用方法
 
 IntelliJ IDEA（或其他编译工具）
-1. Sql 导入数据库中
-2. 将项目导入到 IntelliJ IDEA 中，然后利用 Maven 工具导入 jar。
-3. 修改项目中的数据库连接名及用户验证。
-4. 启动项目,即可浏览系统。
+1. Sql导入数据库中，lexian.sql
+2. 将项目导入到 IntelliJ IDEA 中，然后利用 Maven工具导入jar。(如有报错将Tomcat的lib文件夹下的所有jar包导入)
+
+3. 修改项目中的application.yml:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/lexian?serverTimezone=Asia/
+
+4. 注意一下有没有设定web文件夹(将项目下的webapp设定为web文件)，点击project structure，点moudules，项目上有个+号，点击加入Web文件，然后将webapp设定为web文件即可。
+
+5. 点击artifacts，加入LexianLife:Web exploded。
+
+6. 启动项目,即可浏览系统。浏览的url是http://localhost:8080/page/index.jsp
+
 
 ## 5.注意事项
 
-1. 项目迭代冗余文件较多，clone 时请加参数 『--depth=1』。
-2. 项目图片资源较多，单独放在云盘，配合 SQL 可另作他用。
+1. 项目图片资源较多，单独放在云盘，配合 SQL 可另作他用。
 > [图片资源](https://pan.baidu.com/s/1iColsjsomMS19LrXZfmAWw)
 > 密码: 6pon
-
-## 6.项目演示
-
-[演示地址](http://47.107.239.108:8079/)
-
-*主页*
-![主页](assets/img/index.png)
-
-*商品*
-![产品](assets/img/prod.png)
-
-*商品详请*
-![产品详请](assets/img/prodDetail.jpg)
-
-*商品评论*
-![商品评论](assets/img/comment.png)
-
-*商品购买*
-![商品评论](assets/img/settleAccount.png)
-
-*顾客主页*
-![顾客主页](assets/img/userHome.png)
-
-*管理员主页*
-![管理员主页](assets/img/manageIndex.png)
